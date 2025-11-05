@@ -4,11 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaxPro Advisors - Expert Taxation Services</title>
+    <title>TaxPro Advisors - Expert Taxation & Business Consulting</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
-        /* Base Reset */
+        /* Base Reset & Typography */
         * {
             margin: 0;
             padding: 0;
@@ -20,10 +23,9 @@
         }
 
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            background-color: #f8f9fa;
             overflow-x: hidden;
         }
 
@@ -33,21 +35,21 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header & Navigation */
         header {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: background 0.4s ease;
+            transition: all 0.3s ease;
         }
 
         header.scrolled {
             background: #fff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.1);
         }
 
         nav {
@@ -58,67 +60,106 @@
         }
 
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .site-logo {
+            height: 50px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-text {
             font-size: 1.8rem;
-            font-weight: bold;
+            font-weight: 700;
             color: #007bff;
-            transition: color 0.3s;
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: #333;
-            transition: color 0.3s;
             font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #007bff;
+            transition: width 0.3s;
         }
 
         .nav-links a:hover {
             color: #007bff;
         }
 
-        .contact-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.9rem;
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
-        /* Hero */
+        .nav-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
         .hero {
             position: relative;
-            color: white;
-            text-align: center;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            color: #fff;
             overflow: hidden;
         }
 
-        .hero-background {
+        .hero::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 110%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 123, 255, 0.7), rgba(0, 43, 92, 0.8)), url('assets/Mainback1.jpg') center/cover no-repeat;
             z-index: -1;
-            transform: translateY(-5%);
-            background: url('assets/Mainback1.jpg') center/cover no-repeat;
         }
 
         .hero-content {
-            animation: fadeInUp 1.5s ease forwards;
+            max-width: 800px;
+            padding: 0 20px;
+            animation: fadeInUp 1s ease;
         }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(40px);
             }
 
             to {
@@ -128,293 +169,432 @@
         }
 
         .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
+            opacity: 0.95;
         }
 
-        .btn {
+        .hero .btn {
             display: inline-block;
-            background: #007bff;
-            color: #fff;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-        }
-
-        .btn:hover {
-            background: #0056b3;
-            transform: scale(1.05);
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+            background: #fff;
             color: #007bff;
-            position: relative;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
 
-        h2::after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background: #007bff;
-            display: block;
-            margin: 10px auto 0;
-            border-radius: 2px;
+        .hero .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
         }
 
-        /* About */
+        /* About Section - 25 Years */
+        .about {
+            padding: 120px 0;
+            background: #f8f9fa;
+        }
+
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
+        }
+
+        .about h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #002b5c;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .about .subtitle {
+            font-size: 1.2rem;
+            color: #7BC950;
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 600;
         }
 
         .about-text p {
-            margin-bottom: 1.5rem;
             font-size: 1.1rem;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-            flex: 1 1 200px;
-        }
-
-        .stat h3 {
-            font-size: 2.5rem;
-            color: #007bff;
-        }
-
-        /* Services */
-        .services-section {
-            text-align: center;
-            padding: 100px 0;
-            background: #fdfaf8;
-        }
-
-        .section-subtitle {
-            color: #7BC950;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #002b5c;
-            margin-bottom: 40px;
-        }
-
-        /* Carousel Container */
-        .values-carousel {
-            position: relative;
-            overflow: hidden;
-            margin-top: 12px;
-            max-width: 90%;
-        }
-
-
-        .values-track {
-            display: flex;
-            gap: 18px;
-            transition: transform 0.45s ease;
-            will-change: transform;
-            padding-bottom: 8px;
-            /* Remove auto scroll settings that break carousel */
-            overflow: hidden;
-            scroll-snap-type: none;
-            margin-left: 75px;
-        }
-
-
-        .values-track::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Card Design */
-        .value-card {
-            flex: 0 0 300px;
-            background: linear-gradient(180deg, #ffffff 70%, rgba(172, 204, 101, 0.1) 100%);
-            border-radius: 50px 50px 30px 30px;
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
-            padding: 105px 24px 40px;
-            text-align: center;
-            scroll-snap-align: center;
-            position: relative;
-            min-height: 300px;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .value-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Bottom Gradient */
-        .value-card::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 45px;
-            border-radius: 0 0 30px 30px;
-            background: linear-gradient(to top, rgba(172, 204, 101, 0.08), transparent);
-        }
-
-        /* Icon */
-        .value-icon {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            z-index: 2;
-        }
-
-        .value-icon::before {
-            content: "";
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 50% 50%, rgba(172, 204, 101, 0.25), transparent 70%);
-            z-index: -1;
-        }
-
-        .value-icon img {
-            width: 70%;
-            height: 70%;
-            object-fit: contain;
-            filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.08));
-        }
-
-        /* Text */
-        .value-card h3 {
-            font-family: Montserrat, sans-serif;
-            font-size: 19px;
-            color: #002b5c;
-            font-weight: 800;
-            margin: 100px 0 8px;
-        }
-
-        .value-card p {
+            margin-bottom: 1.5rem;
             color: #555;
-            font-size: 15px;
-            line-height: 1.6;
-            margin: 0 auto;
-            max-width: 90%;
         }
 
-        /* Testimonials */
-        .testimonial-grid {
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature h3 {
+            font-size: 1.4rem;
+            color: #002b5c;
+            margin-bottom: 1rem;
+        }
+
+        .feature p {
+            color: #666;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .services h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #002b5c;
+        }
+
+        .services .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #7BC950;
+            margin-bottom: 4rem;
+        }
+
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .testimonial {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .service-card {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
             text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(123, 201, 80, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #002b5c;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-btn {
+            background: #007bff;
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .service-btn:hover {
+            background: #0056b3;
+        }
+
+        /* Quote Section */
+        .quote {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            text-align: center;
+        }
+
+        .quote p {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .quote cite {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 120px 0;
+            background: #f8f9fa;
+        }
+
+        .why-us h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #002b5c;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-item h3 {
+            font-size: 1.5rem;
+            color: #002b5c;
+            margin-bottom: 1rem;
+        }
+
+        .why-item p {
+            color: #666;
+        }
+
+        /* Trusted By */
+        .trusted {
+            padding: 80px 0;
+            background: #fff;
+        }
+
+        .trusted h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #002b5c;
+        }
+
+        .logos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .logo-item {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            border-radius: 10px;
             transition: transform 0.3s;
         }
 
-        .testimonial:hover {
-            transform: scale(1.03);
+        .logo-item:hover {
+            transform: scale(1.05);
         }
 
-        .client-name {
-            font-weight: bold;
-            margin-top: 1rem;
-            color: #007bff;
+        .logo-item img {
+            max-height: 50px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 0;
+            background: #f8f9fa;
+        }
+
+        .testimonials h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #002b5c;
+        }
+
+        .swiper {
+            padding-bottom: 50px;
+        }
+
+        .testimonial-slide {
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .testimonial-content {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #002b5c;
+            font-weight: 600;
+        }
+
+        .author-info p {
+            color: #7BC950;
+            font-size: 0.9rem;
         }
 
         /* Contact */
         .contact {
-            background: #007bff;
-            color: white;
+            padding: 120px 0;
+            background: linear-gradient(135deg, #002b5c, #007bff);
+            color: #fff;
+        }
+
+        .contact h2 {
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #7BC950;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: #7BC950;
         }
 
         .contact form {
             display: grid;
-            gap: 1rem;
-            max-width: 600px;
-            margin: 0 auto;
+            gap: 1.5rem;
         }
 
         .contact input,
         .contact textarea {
-            padding: 10px;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .contact input::placeholder,
+        .contact textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .contact button {
-            background: #fff;
-            color: #007bff;
-            padding: 12px;
+            background: #7BC950;
+            color: #fff;
+            padding: 15px;
             border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            border-radius: 10px;
             font-weight: 600;
-            transition: 0.3s;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
         .contact button:hover {
-            background: #e9ecef;
+            background: #66a33e;
         }
 
         /* Footer */
         footer {
-            background: #333;
-            color: white;
+            background: #002b5c;
+            color: #fff;
             text-align: center;
-            padding: 2rem 0;
+            padding: 40px 0;
         }
 
-        /* Back to Top Button */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #7BC950;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #7BC950;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 1rem;
+            opacity: 0.8;
+        }
+
+        /* Back to Top */
         #backToTop {
             position: fixed;
             bottom: 30px;
@@ -422,383 +602,376 @@
             background: #007bff;
             color: #fff;
             border: none;
-            padding: 12px 15px;
+            padding: 15px;
             border-radius: 50%;
             cursor: pointer;
             display: none;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
-            transition: transform 0.3s ease;
+            z-index: 1000;
+            transition: all 0.3s;
         }
 
         #backToTop:hover {
+            background: #0056b3;
             transform: scale(1.1);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
             .nav-links {
                 display: none;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .why-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
             }
         }
 
-        /* Carousel buttons */
-        .carousel-btn {
-            position: absolute;
-            top: 45%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            font-size: 30px;
-            color: #333;
-            cursor: pointer;
-            z-index: 5;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.3s, transform 0.2s;
-        }
-
-        .carousel-btn:hover {
+        /* Swiper Pagination */
+        .swiper-pagination-bullet {
             background: #007bff;
-            color: #fff;
-            transform: translateY(-50%) scale(1.1);
         }
 
-        .carousel-btn.left {
-            left: 10px;
-        }
-
-        .carousel-btn.right {
-            right: 10px;
-        }
-
-        /* Adjust visible cards for different screens */
-        @media (min-width: 1025px) {
-            .value-card {
-                flex: 0 0 calc(25% - 18px);
-                /* 4 visible cards */
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .value-card {
-                flex: 0 0 calc(50% - 18px);
-                /* 2 visible */
-            }
-        }
-
-        @media (max-width: 600px) {
-            .value-card {
-                flex: 0 0 100%;
-                /* 1 visible */
-            }
+        .swiper-pagination-bullet-active {
+            background: #7BC950;
         }
     </style>
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <nav class="container">
-            <div class="logo">TaxPro Advisors</div>
+            <a href="#home" class="logo">
+                <img src="assets/logo.jpeg" alt="TaxPro Advisors Logo" class="site-logo">
+                <span class="logo-text">Ananya Enterprises</span>
+            </a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#why-us">Why Us</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="contact-info">
-                <span>Call Us 24/7</span>
-                <a href="tel:+1234567890" style="color:#007bff;">+1 (234) 567-890</a>
-            </div>
+            <a href="#contact" class="nav-btn">Get Quote</a>
         </nav>
     </header>
 
+    <!-- Hero -->
     <section id="home" class="hero">
-        <div class="hero-background" id="parallax-bg"></div>
-        <div class="hero-content container">
-            <h1>We Make the Most Creative Taxation Solutions</h1>
-            <p>Innovative tax strategies that drive compliance, efficiency, and long-term success.</p>
+        <div class="hero-content">
+            <h1>25 Years of Successful Taxation & Business Consulting</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua.</p>
             <a href="#contact" class="btn">Get Started Today</a>
         </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About Our Company</h2>
+            <h2 class="subtitle">About TaxPro Advisors</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Tailored Tax Solutions, Proven Results, & Exceptional Service</h3>
-                    <p>At TaxPro Advisors, we specialize in providing forward-thinking taxation services designed to
-                        drive business and personal financial growth.</p>
-                    <p>Join our 50,000+ satisfied clients worldwide and unlock seamless compliance and tax-saving
-                        experiences.</p>
+                    <h2>Expert Guidance for Your Financial Future</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <div class="features-grid">
+                        <div class="feature">
+                            <h3>Solution Focused</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Customer Oriented</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                        <div class="feature">
+                            <h3>Dedicated Team</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
                 </div>
-                <img src="https://via.placeholder.com/500x300?text=Tax+Consulting" alt="Tax Consulting"
-                    style="width:100%;border-radius:10px;">
-            </div>
-            <div class="stats">
-                <div class="stat">
-                    <h3 data-count="98">0</h3>
-                    <p>Client Satisfaction</p>
-                </div>
-                <div class="stat">
-                    <h3 data-count="15">0</h3>
-                    <p>Years Experience</p>
-                </div>
-                <div class="stat">
-                    <h3 data-count="10000">0</h3>
-                    <p>Taxes Filed</p>
-                </div>
+                <img src="https://via.placeholder.com/600x400?text=Consulting+Team" alt="Consulting Team"
+                    style="width:100%; border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
 
-    <section class="services-section">
-        <h4 class="section-subtitle">Our Services</h4>
-        <h2 class="section-title">Business & Taxation Solutions</h2>
-
-        <div class="values-carousel">
-            <button class="carousel-btn left" id="prevBtn">&#10094;</button>
-
-            <div class="values-track" id="valuesTrack">
-
-                <!-- Income Tax -->
-                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
-                    <div class="value-icon">
-                        <img src="assets/icons/income-tax.png" alt="Income Tax">
-                    </div>
+    <!-- Services -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="subtitle">Services</h2>
+            <h2>Services That Help Your Business Grow</h2>
+            <p style="text-align:center; color:#666; margin-bottom:3rem;">Lorem Ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="services-grid">
+                <div class="service-card">
                     <h3>Income Tax Return</h3>
-                    <p>Expert help in filing accurate ITRs and maximizing your tax benefits.</p>
+                    <p>Expert help in filing accurate ITRs and maximizing your tax benefits with personalized
+                        strategies.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- Accounting -->
-                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
-                    <div class="value-icon">
-                        <img src="assets/icons/accounting.png" alt="Accounting">
-                    </div>
-                    <h3>Accounting & Auditing</h3>
-                    <p>Transparent and professional bookkeeping and auditing services.</p>
-                </div>
-
-                <!-- Professional Tax -->
-                <div class="value-card" style="--accent:#7BC950; --accent-2:#4E79D3;">
-                    <div class="value-icon">
-                        <img src="assets/icons/prof-tax.png" alt="Professional Tax">
-                    </div>
-                    <h3>Professional Tax Reg. & Return</h3>
-                    <p>Get registered and file your professional tax returns with ease.</p>
-                </div>
-
-                <!-- GST -->
-                <div class="value-card" style="--accent:#4E79D3; --accent-2:#9BC53D;">
-                    <div class="value-icon">
-                        <img src="assets/icons/gst.png" alt="GST">
-                    </div>
+                <div class="service-card">
                     <h3>GST Registration & Return</h3>
-                    <p>Simple and compliant GST registration and return filing support.</p>
+                    <p>Simple and compliant GST services to ensure your business stays ahead of regulations.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- Shop Act -->
-                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
-                    <div class="value-icon">
-                        <img src="assets/icons/shop.png" alt="Shop Act">
-                    </div>
-                    <h3>Shop Act Registration</h3>
-                    <p>Quick registration for your business under the Shop Act regulation.</p>
+                <div class="service-card">
+                    <h3>Accounting & Auditing</h3>
+                    <p>Professional bookkeeping and audit services for transparent financial management.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- Project Report -->
-                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
-                    <div class="value-icon">
-                        <img src="assets/icons/project.png" alt="Project Report">
-                    </div>
-                    <h3>Project Report for Loan</h3>
-                    <p>Well-structured financial reports to help you secure business loans.</p>
+                <div class="service-card">
+                    <h3>Business Consulting</h3>
+                    <p>Tailored consulting to drive growth, efficiency, and strategic decision-making.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- MSME -->
-                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
-                    <div class="value-icon">
-                        <img src="assets/icons/msme.png" alt="MSME">
-                    </div>
+                <div class="service-card">
                     <h3>MSME Registration</h3>
-                    <p>Register under MSME/Udyam and get access to business benefits.</p>
+                    <p>Streamlined MSME/Udyam registration to unlock government benefits and support.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- EPF/ESI -->
-                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
-                    <div class="value-icon">
-                        <img src="assets/icons/epf.png" alt="EPF/ESI">
-                    </div>
-                    <h3>EPF/ESI Registration</h3>
-                    <p>End-to-end assistance in registering and filing EPF & ESI returns.</p>
+                <div class="service-card">
+                    <h3>Project Report for Loans</h3>
+                    <p>Comprehensive financial reports to secure funding and investment opportunities.</p>
+                    <a href="#contact" class="service-btn">Learn More</a>
                 </div>
-
-                <!-- Food Licence -->
-                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
-                    <div class="value-icon">
-                        <img src="assets/icons/food.png" alt="Food Licence">
-                    </div>
-                    <h3>Food Licence (FSSAI)</h3>
-                    <p>Get your FSSAI licence quickly and ensure full compliance.</p>
-                </div>
-
             </div>
-            <button class="carousel-btn right" id="nextBtn">&#10095;</button>
         </div>
     </section>
 
+    <!-- Quote -->
+    <section class="quote">
+        <div class="container">
+            <p>"Hiring a consultant firm can help businesses improve performance and make necessary changes to achieve
+                success."</p>
+            <cite>- Business Leader</cite>
+        </div>
+    </section>
 
+    <!-- Why Us -->
+    <section id="why-us" class="why-us">
+        <div class="container">
+            <h2>Why Choose Us</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <h3>25+ Years Experience</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+                        mattis, pulvinar dapibus leo.</p>
+                </div>
+                <div class="why-item">
+                    <h3>250+ Satisfied Clients</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+                        mattis, pulvinar dapibus leo.</p>
+                </div>
+                <div class="why-item">
+                    <h3>Expert Team</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
+                        mattis, pulvinar dapibus leo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Trusted By -->
+    <section id="trusted" class="trusted">
+        <div class="container">
+            <h2>Trusted by 250+ Companies</h2>
+            <p style="text-align:center; color:#666; margin-bottom:3rem;">Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <div class="logos-grid">
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+1" alt="Client 1"></div>
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+2" alt="Client 2"></div>
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+3" alt="Client 3"></div>
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+4" alt="Client 4"></div>
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+5" alt="Client 5"></div>
+                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+6" alt="Client 6"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <p>"The team transformed our tax strategy with precision. The savings exceeded our expectations!"
-                    </p>
-                    <div class="client-name">Sarah Johnson</div>
+            <div class="swiper testimonial-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <p>"The team transformed our tax strategy with precision. The savings exceeded our
+                                    expectations!"</p>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60?text=SJ" alt="Sarah J" class="author-img">
+                                    <div class="author-info">
+                                        <h4>Sarah Johnson</h4>
+                                        <p>CEO, TechCorp</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <p>"Expert guidance during our audit – professional and stress-free. Highly recommend!"
+                                </p>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60?text=ML" alt="Michael L"
+                                        class="author-img">
+                                    <div class="author-info">
+                                        <h4>Michael Lee</h4>
+                                        <p>CFO, Innovate Inc</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide testimonial-slide">
+                        <div class="testimonial-content">
+                            <div class="testimonial">
+                                <p>"Seamless filing process and personalized advice. True partners in financial
+                                    success."</p>
+                                <div class="testimonial-author">
+                                    <img src="https://via.placeholder.com/60?text=EC" alt="Emily C" class="author-img">
+                                    <div class="author-info">
+                                        <h4>Emily Chen</h4>
+                                        <p>Founder, GrowthHub</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="testimonial">
-                    <p>"Expert guidance during our audit – professional and stress-free. Highly recommend!"</p>
-                    <div class="client-name">Michael Lee</div>
-                </div>
-                <div class="testimonial">
-                    <p>"Seamless filing process and personalized advice. True partners in financial success."</p>
-                    <div class="client-name">Emily Chen</div>
-                </div>
+                <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Contact Us</h2>
-            <p style="text-align:center;margin-bottom:2rem;">Ready to optimize your taxes? Get in touch today.</p>
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="email" placeholder="Your Email" required>
-                <textarea rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <h2>Let's Talk About Your Business</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                        </svg>
+                        <span>Call Us 24/7</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                        </svg>
+                        <span>+1 (234) 567-890</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24">
+                            <path
+                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 14H5V8h14v10zm-2-6l-2.5-1.5L13 12l-2.5-1.5L9 12V7h2v3.28l2.5-1.5L17 10V7h2v5z" />
+                        </svg>
+                        <span>hello@taxproadvisors.com</span>
+                    </div>
+                </div>
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <input type="text" placeholder="Subject" required>
+                    <textarea rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 TaxPro Advisors. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TaxPro Advisors</h3>
+                    <p>Expert taxation and business consulting services for your success.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#services">Services</a></p>
+                    <p><a href="#about">About</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p><a href="#services">Tax Consulting</a></p>
+                    <p><a href="#services">Business Setup</a></p>
+                    <p><a href="#services">Auditing</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>+1 (234) 567-890</p>
+                    <p>hello@taxproadvisors.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 TaxPro Advisors. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
     <button id="backToTop">↑</button>
 
+    <!-- Scripts -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-        // Scroll effects
-        const header = document.querySelector("header");
-        const sections = document.querySelectorAll("section");
-        const backToTop = document.getElementById("backToTop");
-
-        window.addEventListener("scroll", () => {
-            header.classList.toggle("scrolled", window.scrollY > 50);
-            backToTop.style.display = window.scrollY > 500 ? "block" : "none";
-
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                if (rect.top < window.innerHeight - 100) {
-                    section.classList.add("visible");
-                }
-            });
+        // Header Scroll
+        window.addEventListener('scroll', () => {
+            document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50);
         });
 
         // Back to Top
-        backToTop.addEventListener("click", () => {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.scrollY > 500 ? 'block' : 'none';
         });
+        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-        // Stats Counter
-        const counters = document.querySelectorAll("[data-count]");
-        let counted = false;
-        window.addEventListener("scroll", () => {
-            const trigger = document.querySelector(".stats").getBoundingClientRect().top;
-            if (!counted && trigger < window.innerHeight) {
-                counters.forEach(counter => {
-                    let target = +counter.getAttribute("data-count");
-                    let count = 0;
-                    let step = Math.ceil(target / 100);
-                    const update = setInterval(() => {
-                        count += step;
-                        if (count >= target) {
-                            count = target;
-                            clearInterval(update);
-                        }
-                        counter.textContent = count + (target < 100 ? "%" : "+");
-                    }, 30);
-                });
-                counted = true;
+        // Swiper for Testimonials
+        new Swiper('.testimonial-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: { delay: 5000 },
+            pagination: { el: '.swiper-pagination', clickable: true },
+            breakpoints: {
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
             }
         });
-    </script>
-    <script>
-        const track = document.getElementById('valuesTrack');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
 
-        let index = 0;
-        const cards = document.querySelectorAll('.value-card');
-        const totalCards = cards.length;
-
-        // determine visible cards based on screen width
-        function getVisibleCards() {
-            if (window.innerWidth >= 1025) return 4;
-            if (window.innerWidth >= 600) return 2;
-            return 1;
-        }
-
-        function updateCarousel() {
-            const visible = getVisibleCards();
-            const cardWidth = cards[0].offsetWidth + 18;
-            const maxIndex = totalCards - visible;
-            if (index < 0) index = 0;
-            if (index > maxIndex) index = maxIndex;
-            track.style.transition = "transform 0.45s ease";
-            track.style.transform = `translateX(-${index * cardWidth}px)`;
-        }
-
-        setInterval(() => {
-            index++;
-            const visible = getVisibleCards();
-            const maxIndex = totalCards - visible;
-            if (index > maxIndex) index = 0;
-            updateCarousel();
-        }, 4000);
-
-
-        nextBtn.addEventListener('click', () => {
-            index++;
-            updateCarousel();
+        // Smooth Scroll for Nav Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
         });
-
-        prevBtn.addEventListener('click', () => {
-            index--;
-            updateCarousel();
-        });
-
-        window.addEventListener('resize', updateCarousel);
     </script>
-
-
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 
 </html>
