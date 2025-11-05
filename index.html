@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaxPro Advisors - Expert Taxation Services</title>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <style>
+        /* Base Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background 0.4s ease;
+        }
+
+        header.scrolled {
+            background: #fff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #007bff;
+            transition: color 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .contact-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            color: white;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            z-index: -1;
+            transform: translateY(-5%);
+            background: url('assets/Mainback1.jpg') center/cover no-repeat;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1.5s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: #0056b3;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #007bff;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: #007bff;
+            display: block;
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1 1 200px;
+        }
+
+        .stat h3 {
+            font-size: 2.5rem;
+            color: #007bff;
+        }
+
+        /* Services */
+        .services-section {
+            text-align: center;
+            padding: 100px 0;
+            background: #fdfaf8;
+        }
+
+        .section-subtitle {
+            color: #7BC950;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #002b5c;
+            margin-bottom: 40px;
+        }
+
+        /* Carousel Container */
+        .values-carousel {
+            position: relative;
+            overflow: hidden;
+            margin-top: 12px;
+            max-width: 90%;
+        }
+
+
+        .values-track {
+            display: flex;
+            gap: 18px;
+            transition: transform 0.45s ease;
+            will-change: transform;
+            padding-bottom: 8px;
+            /* Remove auto scroll settings that break carousel */
+            overflow: hidden;
+            scroll-snap-type: none;
+            margin-left: 75px;
+        }
+
+
+        .values-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Card Design */
+        .value-card {
+            flex: 0 0 300px;
+            background: linear-gradient(180deg, #ffffff 70%, rgba(172, 204, 101, 0.1) 100%);
+            border-radius: 50px 50px 30px 30px;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+            padding: 105px 24px 40px;
+            text-align: center;
+            scroll-snap-align: center;
+            position: relative;
+            min-height: 300px;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Bottom Gradient */
+        .value-card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 45px;
+            border-radius: 0 0 30px 30px;
+            background: linear-gradient(to top, rgba(172, 204, 101, 0.08), transparent);
+        }
+
+        /* Icon */
+        .value-icon {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            z-index: 2;
+        }
+
+        .value-icon::before {
+            content: "";
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 50% 50%, rgba(172, 204, 101, 0.25), transparent 70%);
+            z-index: -1;
+        }
+
+        .value-icon img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.08));
+        }
+
+        /* Text */
+        .value-card h3 {
+            font-family: Montserrat, sans-serif;
+            font-size: 19px;
+            color: #002b5c;
+            font-weight: 800;
+            margin: 100px 0 8px;
+        }
+
+        .value-card p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 90%;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .testimonial:hover {
+            transform: scale(1.03);
+        }
+
+        .client-name {
+            font-weight: bold;
+            margin-top: 1rem;
+            color: #007bff;
+        }
+
+        /* Contact */
+        .contact {
+            background: #007bff;
+            color: white;
+        }
+
+        .contact form {
+            display: grid;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input,
+        .contact textarea {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background: #fff;
+            color: #007bff;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .contact button:hover {
+            background: #e9ecef;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Back to Top Button */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        #backToTop:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Carousel buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 45%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 30px;
+            color: #333;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .carousel-btn:hover {
+            background: #007bff;
+            color: #fff;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.left {
+            left: 10px;
+        }
+
+        .carousel-btn.right {
+            right: 10px;
+        }
+
+        /* Adjust visible cards for different screens */
+        @media (min-width: 1025px) {
+            .value-card {
+                flex: 0 0 calc(25% - 18px);
+                /* 4 visible cards */
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .value-card {
+                flex: 0 0 calc(50% - 18px);
+                /* 2 visible */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .value-card {
+                flex: 0 0 100%;
+                /* 1 visible */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">TaxPro Advisors</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="contact-info">
+                <span>Call Us 24/7</span>
+                <a href="tel:+1234567890" style="color:#007bff;">+1 (234) 567-890</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-background" id="parallax-bg"></div>
+        <div class="hero-content container">
+            <h1>We Make the Most Creative Taxation Solutions</h1>
+            <p>Innovative tax strategies that drive compliance, efficiency, and long-term success.</p>
+            <a href="#contact" class="btn">Get Started Today</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Our Company</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Tailored Tax Solutions, Proven Results, & Exceptional Service</h3>
+                    <p>At TaxPro Advisors, we specialize in providing forward-thinking taxation services designed to
+                        drive business and personal financial growth.</p>
+                    <p>Join our 50,000+ satisfied clients worldwide and unlock seamless compliance and tax-saving
+                        experiences.</p>
+                </div>
+                <img src="https://via.placeholder.com/500x300?text=Tax+Consulting" alt="Tax Consulting"
+                    style="width:100%;border-radius:10px;">
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <h3 data-count="98">0</h3>
+                    <p>Client Satisfaction</p>
+                </div>
+                <div class="stat">
+                    <h3 data-count="15">0</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat">
+                    <h3 data-count="10000">0</h3>
+                    <p>Taxes Filed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <h4 class="section-subtitle">Our Services</h4>
+        <h2 class="section-title">Business & Taxation Solutions</h2>
+
+        <div class="values-carousel">
+            <button class="carousel-btn left" id="prevBtn">&#10094;</button>
+
+            <div class="values-track" id="valuesTrack">
+
+                <!-- Income Tax -->
+                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
+                    <div class="value-icon">
+                        <img src="assets/icons/income-tax.png" alt="Income Tax">
+                    </div>
+                    <h3>Income Tax Return</h3>
+                    <p>Expert help in filing accurate ITRs and maximizing your tax benefits.</p>
+                </div>
+
+                <!-- Accounting -->
+                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
+                    <div class="value-icon">
+                        <img src="assets/icons/accounting.png" alt="Accounting">
+                    </div>
+                    <h3>Accounting & Auditing</h3>
+                    <p>Transparent and professional bookkeeping and auditing services.</p>
+                </div>
+
+                <!-- Professional Tax -->
+                <div class="value-card" style="--accent:#7BC950; --accent-2:#4E79D3;">
+                    <div class="value-icon">
+                        <img src="assets/icons/prof-tax.png" alt="Professional Tax">
+                    </div>
+                    <h3>Professional Tax Reg. & Return</h3>
+                    <p>Get registered and file your professional tax returns with ease.</p>
+                </div>
+
+                <!-- GST -->
+                <div class="value-card" style="--accent:#4E79D3; --accent-2:#9BC53D;">
+                    <div class="value-icon">
+                        <img src="assets/icons/gst.png" alt="GST">
+                    </div>
+                    <h3>GST Registration & Return</h3>
+                    <p>Simple and compliant GST registration and return filing support.</p>
+                </div>
+
+                <!-- Shop Act -->
+                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
+                    <div class="value-icon">
+                        <img src="assets/icons/shop.png" alt="Shop Act">
+                    </div>
+                    <h3>Shop Act Registration</h3>
+                    <p>Quick registration for your business under the Shop Act regulation.</p>
+                </div>
+
+                <!-- Project Report -->
+                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
+                    <div class="value-icon">
+                        <img src="assets/icons/project.png" alt="Project Report">
+                    </div>
+                    <h3>Project Report for Loan</h3>
+                    <p>Well-structured financial reports to help you secure business loans.</p>
+                </div>
+
+                <!-- MSME -->
+                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
+                    <div class="value-icon">
+                        <img src="assets/icons/msme.png" alt="MSME">
+                    </div>
+                    <h3>MSME Registration</h3>
+                    <p>Register under MSME/Udyam and get access to business benefits.</p>
+                </div>
+
+                <!-- EPF/ESI -->
+                <div class="value-card" style="--accent:#4E79D3; --accent-2:#7BC950;">
+                    <div class="value-icon">
+                        <img src="assets/icons/epf.png" alt="EPF/ESI">
+                    </div>
+                    <h3>EPF/ESI Registration</h3>
+                    <p>End-to-end assistance in registering and filing EPF & ESI returns.</p>
+                </div>
+
+                <!-- Food Licence -->
+                <div class="value-card" style="--accent:#9BC53D; --accent-2:#4E79D3;">
+                    <div class="value-icon">
+                        <img src="assets/icons/food.png" alt="Food Licence">
+                    </div>
+                    <h3>Food Licence (FSSAI)</h3>
+                    <p>Get your FSSAI licence quickly and ensure full compliance.</p>
+                </div>
+
+            </div>
+            <button class="carousel-btn right" id="nextBtn">&#10095;</button>
+        </div>
+    </section>
+
+
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Clients Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p>"The team transformed our tax strategy with precision. The savings exceeded our expectations!"
+                    </p>
+                    <div class="client-name">Sarah Johnson</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Expert guidance during our audit – professional and stress-free. Highly recommend!"</p>
+                    <div class="client-name">Michael Lee</div>
+                </div>
+                <div class="testimonial">
+                    <p>"Seamless filing process and personalized advice. True partners in financial success."</p>
+                    <div class="client-name">Emily Chen</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p style="text-align:center;margin-bottom:2rem;">Ready to optimize your taxes? Get in touch today.</p>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 TaxPro Advisors. All rights reserved.</p>
+    </footer>
+
+    <button id="backToTop">↑</button>
+
+    <script>
+        // Scroll effects
+        const header = document.querySelector("header");
+        const sections = document.querySelectorAll("section");
+        const backToTop = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            header.classList.toggle("scrolled", window.scrollY > 50);
+            backToTop.style.display = window.scrollY > 500 ? "block" : "none";
+
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    section.classList.add("visible");
+                }
+            });
+        });
+
+        // Back to Top
+        backToTop.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Stats Counter
+        const counters = document.querySelectorAll("[data-count]");
+        let counted = false;
+        window.addEventListener("scroll", () => {
+            const trigger = document.querySelector(".stats").getBoundingClientRect().top;
+            if (!counted && trigger < window.innerHeight) {
+                counters.forEach(counter => {
+                    let target = +counter.getAttribute("data-count");
+                    let count = 0;
+                    let step = Math.ceil(target / 100);
+                    const update = setInterval(() => {
+                        count += step;
+                        if (count >= target) {
+                            count = target;
+                            clearInterval(update);
+                        }
+                        counter.textContent = count + (target < 100 ? "%" : "+");
+                    }, 30);
+                });
+                counted = true;
+            }
+        });
+    </script>
+    <script>
+        const track = document.getElementById('valuesTrack');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let index = 0;
+        const cards = document.querySelectorAll('.value-card');
+        const totalCards = cards.length;
+
+        // determine visible cards based on screen width
+        function getVisibleCards() {
+            if (window.innerWidth >= 1025) return 4;
+            if (window.innerWidth >= 600) return 2;
+            return 1;
+        }
+
+        function updateCarousel() {
+            const visible = getVisibleCards();
+            const cardWidth = cards[0].offsetWidth + 18;
+            const maxIndex = totalCards - visible;
+            if (index < 0) index = 0;
+            if (index > maxIndex) index = maxIndex;
+            track.style.transition = "transform 0.45s ease";
+            track.style.transform = `translateX(-${index * cardWidth}px)`;
+        }
+
+        setInterval(() => {
+            index++;
+            const visible = getVisibleCards();
+            const maxIndex = totalCards - visible;
+            if (index > maxIndex) index = 0;
+            updateCarousel();
+        }, 4000);
+
+
+        nextBtn.addEventListener('click', () => {
+            index++;
+            updateCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            index--;
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+    </script>
+
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</body>
+
+</html>
