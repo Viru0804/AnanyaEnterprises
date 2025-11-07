@@ -10,6 +10,8 @@
         rel="stylesheet">
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         /* Base Reset & Typography */
         * {
@@ -350,77 +352,270 @@
         }
 
         /* Why Choose Us */
+        /* ===== WHY CHOOSE US – SAME COLOR THEME AS FEATURES ===== */
         .why-us {
-            padding: 120px 0;
+            padding: 100px 0;
             background: #f8f9fa;
+            /* same soft blue gradient */
+            position: relative;
         }
 
         .why-us h2 {
-            font-size: 2.8rem;
             text-align: center;
-            margin-bottom: 3rem;
+            font-size: 2.5rem;
             color: #002b5c;
+            /* dark navy */
+            margin-bottom: 3rem;
+            font-weight: 700;
         }
 
+        /* Grid */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
+        /* Individual card */
         .why-item {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            padding: 2rem;
+            box-shadow: 0 12px 30px rgba(0, 43, 92, 0.08);
+            transition: all 0.35s ease;
+            border-top: 5px solid #007bff;
+            /* primary blue */
+            position: relative;
+            overflow: hidden;
         }
 
-        .why-item h3 {
-            font-size: 1.5rem;
-            color: #002b5c;
-            margin-bottom: 1rem;
+        .why-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 43, 92, 0.15);
+            border-top-color: #7BC950;
+            /* accent green on hover */
         }
 
-        .why-item p {
-            color: #666;
-        }
-
-        /* Trusted By */
-        .trusted {
-            padding: 80px 0;
-            background: #fff;
-        }
-
-        .trusted h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #002b5c;
-        }
-
-        .logos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .logo-item {
-            height: 80px;
+        /* Icon circle – same as features */
+        .why-item .why-icon {
+            width: 74px;
+            height: 74px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: transform 0.3s;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 14px rgba(0, 123, 255, 0.25);
         }
 
-        .logo-item:hover {
-            transform: scale(1.05);
+        .why-item:hover .why-icon {
+            background: linear-gradient(135deg, #7BC950, #66a33e);
+            transform: scale(1.12) rotate(10deg);
+            box-shadow: 0 8px 18px rgba(123, 201, 80, 0.35);
         }
 
-        .logo-item img {
+        /* Text */
+        .why-item h3 {
+            color: #002b5c;
+            font-size: 1.45rem;
+            margin-bottom: 0.9rem;
+            font-weight: 600;
+        }
+
+        .why-item p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .why-us h2 {
+                font-size: 2rem;
+            }
+
+            .why-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .why-item .why-icon {
+                width: 64px;
+                height: 64px;
+                font-size: 1.7rem;
+            }
+        }
+
+        /* Trusted By */
+        /* ===== TRUSTED BY – MODERN CAROUSEL STYLING ===== */
+        .trusted {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .trusted::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="10" cy="10" r="2" fill="%23007bff20"/><circle cx="90" cy="90" r="2" fill="%237bc95020"/></svg>') repeat;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .trusted-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .trusted-header h2 {
+            font-size: 2.6rem;
+            color: #002b5c;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .trusted-header .highlight {
+            background: linear-gradient(120deg, #007bff, #7BC950);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .trusted-header p {
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Carousel */
+        .trusted-carousel {
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            margin: 2rem 0;
+        }
+
+        .carousel-track {
+            display: flex;
+            animation: scrollLogos 25s linear infinite;
+            width: max-content;
+        }
+
+        .logo-slide {
+            flex: 0 0 auto;
+            width: 180px;
+            height: 90px;
+            margin: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0, 43, 92, 0.08);
+            transition: all 0.4s ease;
+            padding: 1rem;
+            filter: grayscale(100%);
+        }
+
+        .logo-slide:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 16px 35px rgba(0, 43, 92, 0.15);
+            filter: grayscale(0%);
+            border: 2px solid #007bff;
+        }
+
+        .logo-slide img {
+            max-width: 120px;
             max-height: 50px;
-            max-width: 100%;
             object-fit: contain;
+            transition: filter 0.4s ease;
+        }
+
+        /* Infinite Scroll Animation */
+        @keyframes scrollLogos {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 6px 20px rgba(0, 43, 92, 0.08);
+            font-weight: 600;
+            color: #002b5c;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .badge i {
+            color: #7BC950;
+            font-size: 1.2rem;
+        }
+
+        .badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 43, 92, 0.12);
+            background: linear-gradient(135deg, #007bff, #7BC950);
+            color: #fff;
+        }
+
+        .badge:hover i {
+            color: #fff;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .trusted-header h2 {
+                font-size: 2rem;
+            }
+
+            .logo-slide {
+                width: 140px;
+                height: 80px;
+                margin: 0 1rem;
+            }
+
+            .logo-slide img {
+                max-width: 100px;
+            }
+
+            .trust-badges {
+                gap: 1rem;
+            }
+
+            .badge {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
         }
 
         /* Testimonials */
@@ -615,6 +810,118 @@
             transform: scale(1.1);
         }
 
+        /* ===== Features Section ===== */
+        /* ===== FEATURES SECTION – NEW COLOR THEME (matches your brand) ===== */
+        .features {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%);
+            /* light blue tint */
+            position: relative;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #002b5c;
+            /* dark navy – same as headings */
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .features-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            opacity: 0.9;
+        }
+
+        /* Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Card */
+        .feature {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 43, 92, 0.08);
+            transition: all 0.35s ease;
+            border-top: 5px solid #007bff;
+            /* primary blue */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 45px rgba(0, 43, 92, 0.15);
+            border-top-color: #7BC950;
+            /* accent green on hover */
+        }
+
+        /* Icon Circle */
+        .feature-icon {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.9rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 14px rgba(0, 123, 255, 0.25);
+        }
+
+        .feature:hover .feature-icon {
+            background: linear-gradient(135deg, #7BC950, #66a33e);
+            transform: scale(1.12) rotate(10deg);
+            box-shadow: 0 8px 18px rgba(123, 201, 80, 0.35);
+        }
+
+        /* Text */
+        .feature h3 {
+            color: #002b5c;
+            font-size: 1.45rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .feature p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .features-title {
+                font-size: 2rem;
+            }
+
+            .features-subtitle {
+                font-size: 1rem;
+            }
+
+            .feature {
+                padding: 1.8rem;
+            }
+
+            .feature-icon {
+                width: 62px;
+                height: 62px;
+                font-size: 1.6rem;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -681,7 +988,7 @@
     <!-- About -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="subtitle">About TaxPro Advisors</h2>
+            <h2 class="subtitle">About Ananya Enterprises</h2>
             <div class="about-content">
                 <div class="about-text">
                     <h2>Expert Guidance for Your Financial Future</h2>
@@ -690,26 +997,57 @@
                         eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    <div class="features-grid">
-                        <div class="feature">
-                            <h3>Solution Focused</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Customer Oriented</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <div class="feature">
-                            <h3>Dedicated Team</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
                 </div>
-                <img src="https://via.placeholder.com/600x400?text=Consulting+Team" alt="Consulting Team"
+                <img src="assets/Mainback.jpg" alt="Consulting Team"
                     style="width:100%; border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="features-title">Our Core Strengths</h2>
+            <p class="features-subtitle">
+                We combine innovation, expertise, and commitment to deliver exceptional consulting experiences.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-lightbulb"></i>
+                    </div>
+                    <h3>Solution Focused</h3>
+                    <p>We craft efficient, result-oriented strategies tailored to your business and tax needs.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3>Customer Oriented</h3>
+                    <p>Your satisfaction is our priority. We ensure personalized, transparent, and timely service.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3>Dedicated Team</h3>
+                    <p>Our experienced professionals work passionately to deliver accurate and trusted solutions.</p>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Innovation Driven</h3>
+                    <p>We leverage technology and modern tools to help your business grow sustainably and efficiently.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Services -->
     <section id="services" class="services">
@@ -741,13 +1079,13 @@
                     <a href="#contact" class="service-btn">Learn More</a>
                 </div>
                 <div class="service-card">
-                    <h3>MSME Registration</h3>
-                    <p>Streamlined MSME/Udyam registration to unlock government benefits and support.</p>
+                    <h3>Project Report for Loans</h3>
+                    <p>Comprehensive financial reports to secure funding and investment opportunities.</p>
                     <a href="#contact" class="service-btn">Learn More</a>
                 </div>
                 <div class="service-card">
-                    <h3>Project Report for Loans</h3>
-                    <p>Comprehensive financial reports to secure funding and investment opportunities.</p>
+                    <h3>MSME Registration</h3>
+                    <p>Streamlined MSME/Udyam registration to unlock government benefits and support.</p>
                     <a href="#contact" class="service-btn">Learn More</a>
                 </div>
             </div>
@@ -769,16 +1107,27 @@
             <h2>Why Choose Us</h2>
             <div class="why-grid">
                 <div class="why-item">
+                    <div class="why-icon">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
                     <h3>25+ Years Experience</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
                         mattis, pulvinar dapibus leo.</p>
                 </div>
+
                 <div class="why-item">
+                    <div class="why-icon">
+                        <i class="fa-solid fa-thumbs-up"></i>
+                    </div>
                     <h3>250+ Satisfied Clients</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
                         mattis, pulvinar dapibus leo.</p>
                 </div>
+
                 <div class="why-item">
+                    <div class="why-icon">
+                        <i class="fa-solid fa-users-gear"></i>
+                    </div>
                     <h3>Expert Team</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper
                         mattis, pulvinar dapibus leo.</p>
@@ -788,18 +1137,73 @@
     </section>
 
     <!-- Trusted By -->
+    <!-- ===== TRUSTED BY SECTION – MODERN CAROUSEL ===== -->
     <section id="trusted" class="trusted">
         <div class="container">
-            <h2>Trusted by 250+ Companies</h2>
-            <p style="text-align:center; color:#666; margin-bottom:3rem;">Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <div class="logos-grid">
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+1" alt="Client 1"></div>
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+2" alt="Client 2"></div>
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+3" alt="Client 3"></div>
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+4" alt="Client 4"></div>
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+5" alt="Client 5"></div>
-                <div class="logo-item"><img src="https://via.placeholder.com/120x50?text=Client+6" alt="Client 6"></div>
+            <div class="trusted-header">
+                <h2>Trusted by <span class="highlight">250+</span> Companies</h2>
+                <p>Leading businesses rely on us for expert taxation & consulting solutions.</p>
+            </div>
+
+            <!-- Logo Carousel -->
+            <div class="trusted-carousel">
+                <div class="carousel-track">
+                    <!-- Repeat logos twice for seamless loop -->
+                    <div class="logo-slide">
+                        <img src="assets/logo1.jpg" alt="Client 1">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo2.jpg" alt="Client 2">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo3.jpg" alt="Client 3">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo4.jpg" alt="Client 4">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo5.jpg" alt="Client 5">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo6.jpg" alt="Client 6">
+                    </div>
+
+                    <!-- Duplicate for seamless loop -->
+                    <div class="logo-slide">
+                        <img src="assets/logo1.jpg" alt="Client 1">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo2.jpg alt="Client 2">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo3.jpg" alt="Client 3">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo4.jpg" alt="Client 4">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo5.jpg" alt="Client 5">
+                    </div>
+                    <div class="logo-slide">
+                        <img src="assets/logo6.jpg" alt="Client 6">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Optional: Trust Badges -->
+            <div class="trust-badges">
+                <div class="badge">
+                    <i class="fa-solid fa-shield-alt"></i>
+                    <span>ISO Certified</span>
+                </div>
+                <div class="badge">
+                    <i class="fa-solid fa-trophy"></i>
+                    <span>Best Tax Consultant 2024</span>
+                </div>
+                <div class="badge">
+                    <i class="fa-solid fa-star"></i>
+                    <span>4.9/5 Client Rating</span>
+                </div>
             </div>
         </div>
     </section>
